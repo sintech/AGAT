@@ -28,7 +28,7 @@
 
 
 ## От теории к практике. 
-Первое, что я сделал для того, чтобы понять, как информация хранится на дискете – снял [полный дамп](agat-840-files/8 MHz, 96 M Samples - IKP7A.logicdata?raw=true) загрузки [ИКП](http://agatcomp.ru/Apps/Ikp17.shtml) [(образ)](agat-840-files/IKP_7A.DSK?raw=true). В графическом виде он представлен ниже.
+Первое, что я сделал для того, чтобы понять, как информация хранится на дискете – снял [полный дамп](agat-840-files/8 MHz, 96 M Samples - IKP7A.logicdata?raw=true) загрузки дискеты [ИКП](http://agatcomp.ru/Apps/Ikp17.shtml). В графическом виде он представлен ниже.
 
 ![ikp-dump]( agat-840-files/ikp-dump.png?raw=true)
 
@@ -170,7 +170,7 @@ addr_parsed: 254:0:1  Checksum: OK (83)
 data: 6a 95 08 ac 01 39 f0 12 cc 00 39 d0 08 20 c6 31 cd 0d 39 f0 12 20 f9 30 b0 69 ac 00 39 a9 00 20 94 30 b0 5d 20 c6 31 8d 0d 39 ad 06 39 c9 06 f0 5e b0 4e 4a f0 40 bc 33 39 d0 da ee 32 39 9d 33 39 08 c9 02 ad 07 39 9d 4b 39 ad 08 39 9d 63 39 ad 09 39 9d 7b 39 f0 16 b0 14 6d 07 39 9d 4b 39 b0 03 de 63 39 38 a9 00 fd 7b 39 9d 7b 39 a9 00 8d 09 39 28 b0 12 20 f9 30 b0 08 ac 06 39 d0 08 2c a9 02 48 20 d0 30 68 28 c9 01 ae 18 39 60 20 e3 31 90 f4 b0 ed 85 3e cc 01 39 18 f0 ed 20 d0 30 b9 ad 39 f0 3f 8d 0a 39 8c 01 39 b9 b9 39 8d 0c 39 b9 b1 39 8d 0b 39 be b5 39 bd e9 30 85 2a bd ea 30 85 2b a0 1a b1 2a 99 17 39 88 10 f8 6c 1c 39 ae 01 39 f0 b4 ad 0c 39 9d b9 39 a9 00 8d 01 39 6c 1e 39 68 68 a9 02 d0 9d 7c 32 43 36 a0 12 88 d0 fd ea 38 e9 01 d0 f5 60 8d 20 c0 78 ad 32 39 83 5a
 ```
 
-Рассчитанные данные полностью совпали с образом дискеты ИКП.
+Рассчитанные данные полностью совпали с [образом](agat-840-files/IKP_7A.DSK?raw=true) дискеты ИКП.
 
 ### Ссылки
 1. John F. Hoeppener, Larry H. Wall, "Encoding/Decoding Techniques Double Floppy Disc Capacity" [PDF][1]
