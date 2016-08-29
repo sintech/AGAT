@@ -177,3 +177,4 @@ data: 6a 95 08 ac 01 39 f0 12 cc 00 39 d0 08 20 c6 31 cd 0d 39 f0 12 20 f9 30 b0
 [1]: agat-840-files/cd-8002-1.pdf "Encoding/Decoding Techniques Double Floppy Disc Capacity"
 2. Oleksandr Kapitanenko, "Agat-7 (Apple II USSR) 800kb disk support" [WWW][2]
 [2]: http://www.torlus.com/floppy/forum/viewtopic.php?f=19&t=1385
+3. Программа для просмотра дампов логического анализатора в формате ".logicdata" [WWW](https://www.saleae.com/downloads)
