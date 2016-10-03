@@ -1,0 +1,48 @@
+Agat 840k
+
+MFM, 300rpm, 250000 bps
+
+5"25 80 Tracks, 21 Sectors per track, Sector 256 bytes, 2 sides, 860160 bytes formatted. Un-Formatted track capacity 6250 bytes.
+=============================================================================
+DOS Track format
+1. GAP1 13x 0xAA bytes
+2. 21 sectors of the following format:
+2.1 Desync: 0xA4, 2 ms zero level interval, 0xFF
+2.2 Address field:
+    0x95, 0x6A (2 byte, address field prologue),
+    volume number (1 byte, default 0xFE),
+    Track number (1 byte, 0x00 - 0x9F),
+    Sector number (1 byte, 0x00 - 0x14),
+    0x5A (1 byte, address field epilogue)
+2.3 GAP 5x 0xAA bytes
+2.4 Desync: 0xA4, 2 ms zero level interval, 0xFF
+2.5 Data field:
+    0x6A, 0x95 (2 byte, data field prologue),
+    256 Data Bytes,
+    CRC (1 byte),
+    0x5A (1 byte, data field epilogue)
+2.7 GAP3 22x 0xAA bytes
+3. There is NO GAP4, after last sector track is exactly 6250 bytes
+
+Agat is using Apple 2 Disk checksum algorithm.
+Despite of being called "simple arithmetic sum" it is more complicated:
+
+function CalcCRC ($data) {
+  $c=0;
+  for ($n=0;$n<=255;$n++) {
+    if ($c>255) {$c++; $c=$c & 255;}
+    $c=$c+$data[$n];
+  }
+  return $c & 255;
+}
+
+Sector numbering is 0..20, Sector order and interleave is not important. Usual sector order is 0..20
+Address field has no disk side information. Tracks are numbered 0..159 and present on disk in following order:
+
+Track 0, Side 0: Track 0
+Track 0, Side 1: Track 1
+Track 1, Side 0: Track 2
+Track 1, Side 1: Track 3
+And so on.
+
+Acknowledge: Oleksandr Kapitanenko (http://www.torlus.com/floppy/forum/viewtopic.php?f=19&t=1385)
