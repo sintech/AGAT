@@ -14,7 +14,7 @@ DOS Track format
     Track number (1 byte, 0x00 - 0x9F),
     Sector number (1 byte, 0x00 - 0x14),
     0x5A (1 byte, address field epilogue)
-2.3 GAP 5x 0xAA bytes
+2.3 GAP2 5x 0xAA bytes
 2.4 Desync: 0xA4, 2 ms zero level interval, 0xFF
 2.5 Data field:
     0x6A, 0x95 (2 byte, data field prologue),
