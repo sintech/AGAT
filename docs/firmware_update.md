@@ -13,13 +13,11 @@
 ![2](https://www.pjrc.com/teensy/win10_loader_3.png)
 
 4. Перейти в меню "File" -> "Open HEX File" и выбрать файл с прошивкой.
-5. Далее выбрать в меню "Operations" команду "Program".
+5. Далее выбрать в меню "Operation" команду "Program". Прошивка завершена.
 
 ![3](https://www.pjrc.com/teensy/win10_loader_5.png)
 
-Прошивка завершена
-
-6. Теперь можно перезагрузить Teensy выполнив команду "Reboot" в меню "Operations"
+6. Теперь можно перезагрузить Teensy выполнив команду "Reboot" в меню "Operation"
 
 ![4](https://www.pjrc.com/teensy/win10_loader_4.png) 
 
