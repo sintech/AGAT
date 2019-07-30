@@ -6,4 +6,4 @@ Agat related information, sources, etc.
 	* [Обновление прошивки на Teensy](docs/firmware_update.md)
 
 
-* [Agat PAL Coder](AgatPALCoder/README.md)
+* [Agat PAL Coder](AgatPALCoder)
