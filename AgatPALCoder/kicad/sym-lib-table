@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name bus-agat7-x1)(type Legacy)(uri ${KIPRJMOD}/bus-agat7-x1.lib)(options "")(descr ""))
+)
