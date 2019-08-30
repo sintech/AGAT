@@ -79,7 +79,7 @@ fileInfo files[100];
 byte file_pos140;
 byte file_pos840;
 
-unsigned long time = micros();
+unsigned long curtime = micros();
 byte bitflip[] = {0b00, 0b10, 0b01, 0b11};
 byte table62[] = {0x96, 0x97, 0x9A, 0x9B, 0x9D, 0x9E, 0x9F, 0xA6,
                   0xA7, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB2, 0xB3,
@@ -187,7 +187,7 @@ void setup() {
     Serial.println(", size: " + String(info.fsize));
   }
   Serial.println();
-  Serial.println(micros() - time);
+  Serial.println(micros() - curtime);
 
   // preload last files
   // EEPROM
@@ -307,7 +307,7 @@ void loop() {
 void readTrack(SdFile imageFile, fileInfo file, byte track_num) {
 
   byte side_num = 2;
-  time = micros();
+  curtime = micros();
   Serial.println("reading file: " + file.fname + " - ext: " + file.ext);
   display_filename();
 
@@ -329,20 +329,20 @@ void readTrack(SdFile imageFile, fileInfo file, byte track_num) {
   imageFile.seekSet(pos_offset + track_num * track_size);
 
   for (byte track_side = 0; track_side < side_num; track_side++) {
-    Serial.print("Reading track: " + String(track) + "/" + String(real_track) + ", Side: " + String(track_side) + ", size: " + String(track_size)+" - ");  Serial.println(micros() - time);
+    Serial.print("Reading track: " + String(track) + "/" + String(real_track) + ", Side: " + String(track_side) + ", size: " + String(track_size)+" - ");  Serial.println(micros() - curtime);
     // change to while loop
     int read_amount = track_size;
     int data_size = SD_SECTOR_SIZE;
     while (read_amount > 0) {
       if (read_amount < data_size) data_size = read_amount;
-      //      Serial.print("after side: "+String(track_side)+", amount: "+String(read_amount)+", read size: "+String(data_size)+" - ");  Serial.println(micros() - time);
+      //      Serial.print("after side: "+String(track_side)+", amount: "+String(read_amount)+", read size: "+String(data_size)+" - ");  Serial.println(micros() - curtime);
       byte sd_sector_buff[data_size];
       imageFile.read((byte*)sd_sector_buff, data_size);
       // raw data array filling
       memcpy(track_buff + (track_size - read_amount), sd_sector_buff, data_size); //+track_size*(1-track_side)
       read_amount -= data_size;
     }
-    Serial.print("  after read - ");    Serial.println(micros() - time);
+    Serial.print("  after read - ");    Serial.println(micros() - curtime);
 
     // encoding
     if (file.type == 140 && file.ext == "DSK") {
@@ -354,20 +354,20 @@ void readTrack(SdFile imageFile, fileInfo file, byte track_num) {
       } else if (file.ext == "DSK") {
         encode_track_dsk(mfm_data[track_side], track_buff, track_num+track_side);
       } else if (file.ext == "NIM") {
-//        Serial.print(" "+String(sizeof(track_buff))+", "+String(track_size)+", "+String(sizeof(mfm_data[track_side]))+" - ");  Serial.println(micros() - time);
+//        Serial.print(" "+String(sizeof(track_buff))+", "+String(track_size)+", "+String(sizeof(mfm_data[track_side]))+" - ");  Serial.println(micros() - curtime);
         memcpy(mfm_data[track_side], track_buff, sizeof(track_buff));
       }
     }
 
-    Serial.print("  after encode - ");    Serial.println(micros() - time);
+    Serial.print("  after encode - ");    Serial.println(micros() - curtime);
 
   }
   if (file.type == 840 &&file.ext == "DSK") track_size = 6250 * 2;
 
-  Serial.print("after image_data array fill - ");    Serial.println(micros() - time);
+  Serial.print("after image_data array fill - ");    Serial.println(micros() - curtime);
 
   display_track_num();
-  Serial.print("after display - ");    Serial.println(micros() - time);
+  Serial.print("after display - ");    Serial.println(micros() - curtime);
   Serial.println();
 }
 
@@ -480,5 +480,3 @@ void display_filename() {
   lcd.setCursor(0, 1);
   lcd.print("" + file840.fname);
 }
-
-
